@@ -1,0 +1,18 @@
+MPD Podcast Playlist Generator v0.0.1a
+
+INSTALL
+
+$ mkdir ~/.mppg/
+$ cp config ~/.mppg/
+$ cp get_title.xsl  ~/.mppg/ 
+$ cp parse_enclosure.xsl ~/.mppg/
+
+# edit path to mpd's playlists
+$ nano mppg 
+
+# install modified version
+$ sudo cp mppg /usr/local/bin/
+
+# edit config and add links to podcasts to it.
+$ nano ~/.mppg/config
+

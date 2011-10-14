@@ -1,0 +1,16 @@
+#!/bin/sh
+MPPGCONF=$HOME/.mppg/config
+M3UDIR=$HOME/.mpd/playlists/
+PREVDIR=$PWD
+cd /tmp/
+while read podcast
+do
+    title=$(xsltproc $HOME/.mppg/get_title.xsl $podcast 2> /dev/null)
+    file=$(xsltproc $HOME/.mppg/parse_enclosure.xsl $podcast 2> /dev/null)
+    for url in $file;do	echo $url >> temp.m3u;done;
+
+    sort temp.m3u 2> /tmp/null | uniq > $M3UDIR/$title.m3u 2> /tmp/null
+    rm temp.m3u 2> /tmp/null
+done < $MPPGCONF
+
+cd $PREVDIR
